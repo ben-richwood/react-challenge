@@ -1,0 +1,70 @@
+body, html, #infinietUniverse, .Container{height:100%;}
+
+.App {
+  text-align: center;
+  background-image: url('moment-in-space-cvi.jpg');
+  /*animation-name: background*/
+  animation-duration: 20s;
+  animation-iteration-count: 3;
+  animation-timing-function: ease-in;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  height:100%;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.Container {
+  width:80%;
+  max-width:650px;
+  margin:0px auto 0;
+  padding-top:60px;
+  text-align: center;
+}
+
+.Container ul{padding-left:0;margin-top:7px;}
+.Container ul li{
+  list-style: none;
+  margin-bottom: 7px;
+  background-color: #f2f2f2;
+  -webkit-transition: background-color .8s ease-in-out;
+  transition: background-color .8s ease-in-out;
+}
+.Container ul li:last-child{margin-bottom: 0;}
+.Container ul li:hover{background-color: #FFF256;}
+
+.IndividualFetchCapsule {
+  text-align: left;
+  padding:6px 0 6px 20px;
+  border-left: 4px solid #0095ff;
+}
+
+.NextBay span{
+  color: white;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes background {
+    from { background-size: auto 100%;}
+    to { background-size: auto 110%;}
+}
