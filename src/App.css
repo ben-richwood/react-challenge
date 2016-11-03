@@ -1,8 +1,26 @@
 body, html, #infinietUniverse, .Container{height:100%;}
 
+#infinietUniverse .comet{
+    -webkit-animation: star 4s infinite linear;
+    -moz-animation: star 4s infinite linear;
+    animation: star 4s infinite linear;
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
+    background: url('img/shooting_star.png') top center no-repeat;
+    background-size: 7%;
+    height: 117px;
+    opacity: 1;
+    position: absolute;
+    left: 0px;
+    top: 17px;
+    width: 112px;
+    z-index: 100;
+}
+
 .App {
   text-align: center;
-  background-image: url('moment-in-space-cvi.jpg');
+  background-image: url('img/moment-in-space-cvi.jpg');
   /*animation-name: background*/
   animation-duration: 20s;
   animation-iteration-count: 3;
@@ -20,6 +38,7 @@ body, html, #infinietUniverse, .Container{height:100%;}
   margin:0px auto 0;
   padding-top:60px;
   text-align: center;
+  z-index:200;
 }
 
 .Container ul{padding-left:0;margin-top:7px;}
@@ -67,4 +86,67 @@ body, html, #infinietUniverse, .Container{height:100%;}
 @keyframes background {
     from { background-size: auto 100%;}
     to { background-size: auto 110%;}
+}
+
+@-webkit-keyframes star {
+  0% {
+    background-size: 3%;
+    left: 100px;
+    top: 251px;
+    opacity: 1; }
+
+  30% {
+    background-size: 17%;
+    left: 258px;
+    /*top: 120px;*/
+    opacity: 0.5; }
+
+  80% {
+    background: url(img/shooting_star.png) top center no-repeat;
+    background-size: 10%;
+    left: 626px;
+    top: -6px;
+    opacity: 0; }
+}
+
+@-moz-keyframes star {
+  0% {
+    background-size: 3%;
+    left: 100px;
+    top: 251px;
+    opacity: 1; }
+
+  30% {
+    background-size: 17%;
+    left: 258px;
+    /*top: 120px;*/
+    opacity: 0.5; }
+
+  80% {
+    background: url(img/shooting_star.png) top center no-repeat;
+    background-size: 10%;
+    left: 626px;
+    top: -6px;
+    opacity: 0; }
+}
+
+@keyframes star {
+  0% {
+    background-size: 3%;
+    left: 100px;
+    top: 251px;
+    opacity: 1; }
+
+  30% {
+    background-size: 17%;
+    left: 258px;
+    /*top: 120px;*/
+    opacity: 0.5; }
+
+  80% {
+    background: url(img/shooting_star.png) top center no-repeat;
+    background-size: 10%;
+    left: 626px;
+    top: -6px;
+    opacity: 0; }
 }

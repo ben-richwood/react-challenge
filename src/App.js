@@ -29,6 +29,7 @@ class StarshipContainer extends React.Component {
 
     return (
     	<div className="App">
+        <div className="comet"></div>
     		<div className="Container">
 	    		<div className="App-header">
 		          <img src={logo} className="App-logo" alt="logo" />
