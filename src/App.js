@@ -3,27 +3,51 @@ import logo from './logo.svg';
 import './App.css';
 
 const per_page = 5;
-var page = 1;
+const page = 1;
+var EncryptedIssuesfromDeepSpace: [];
 
 console.log(per_page+' issues / pages. Id page: '+page);
+
+function getData(page, per_page){
+  page = ((page !== undefined) && !isNaN(page) ) ? page : 1;
+  per_page = ((per_page !== undefined) && !isNaN(per_page) ) ? per_page : 5;
+
+  console.log('function getData - page: '+page);
+  
+  fetch("https://api.github.com/repos/rails/rails/issues?page="+page+"&per_page="+per_page)
+    .then((response) => {
+      console.log('function getData - response.json(): '+response);
+      console.log(response);
+      return response.json();
+    })
+    .then((EncryptedIssuesfromDeepSpace) => {
+      console.log('EncryptedIssuesfromDeepSpace : ');
+      console.log(EncryptedIssuesfromDeepSpace);
+      this.setState({ EncryptedIssuesfromDeepSpace: EncryptedIssuesfromDeepSpace })
+    })
+    .catch(function(error) {
+      console.log('Houston, we got a problem with fetch: \n' + error.message);
+    });
+  }
 
 class StarshipContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      EncryptedIssuesfromDeepSpace: []
-    }
+    // this.state = this.EncryptedIssuesfromDeepSpace.bind(this);
+    // this.state = { EncryptedIssuesfromDeepSpace: [] }
   }
 
-  componentWillMount() {
-  fetch("https://api.github.com/repos/rails/rails/issues?page="+page+"&per_page="+per_page)
-    .then((response) => {
-      return response.json()
-    })
-    .then((EncryptedIssuesfromDeepSpace) => {
-      this.setState({ EncryptedIssuesfromDeepSpace: EncryptedIssuesfromDeepSpace })
-    })
-  }
+  getData
+
+  // componentWillMount() {
+  // fetch("https://api.github.com/repos/rails/rails/issues?page="+page+"&per_page="+per_page)
+  //   .then((response) => {
+  //     return response.json()
+  //   })
+  //   .then((EncryptedIssuesfromDeepSpace) => {
+  //     this.setState({ EncryptedIssuesfromDeepSpace: EncryptedIssuesfromDeepSpace })
+  //   })
+  // }
 
   render() {
 
@@ -43,9 +67,7 @@ class StarshipContainer extends React.Component {
 
             <NextBay />
 
-          
 		    </div>
-		    
 		  </div>
     )
   }
@@ -91,27 +113,35 @@ IndividualFetchCapsule.defaultProps = {
 class NextBay extends React.Component {
   constructor(props) {
     super(props);
-    // this.handleChange = this.handleChange.bind(this);
-    // this.state = {EncryptedIssuesfromDeepSpace: ''};
+    // buton next & previous
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {valueButon: '1'};
   }
 
-  handleChange(e) {
-    this.setState({EncryptedIssuesfromDeepSpace: e});
+  // If there is changement with butons
+  handleChange(valueButon) {
+    this.setState({valueButon: this.state.value});
+    getData(page+valueButon);
+    console.log(page);
   }
 
   render() {
-    //var value = this.state.value;
+    // buton next & previous
+    // const NumberOfPage = getData(page++);
+    const valueButon = this.state.value;
 
     return (
 		<div className="NextBay">
 	    	<div>
 	    		<p>
-          {/* <button value={page++} onChange={this.handleChange}> Next </button> */ }
+            <button value={-1} onClick={this.handleChange}> Previous </button>  --  <button value={1} onClick={this.handleChange}> Next </button>
+            <br/>
 
 	    			<span title="Display the 5 previous issues" > &lt;&lt; Previous</span> - <span title="Display the 5 next issues">Next &gt;&gt;</span>
-	    	</p>
+	    	  </p>
 
-        { /*<IndividualFetchCapsule list={this.state.EncryptedIssuesfromDeepSpace} page={value} /> */ }
+        {//<IndividualFetchCapsule list={this.state.EncryptedIssuesfromDeepSpace} page={value} />
+      }
 
 	    </div>
 	  </div>
